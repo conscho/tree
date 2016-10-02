@@ -16,9 +16,14 @@ else:
     print(cwd)
 
 
+# List folder contents in sorted format
+def listdir_nohidden_sorted(path):
+    dir_content = [x for x in os.listdir(path) if not x.startswith('.')]
+    return sorted(dir_content, key=str.lower)
+
 # Recursive function
-def tree(cwd, prepend=""):
-    dir_content = [x for x in os.listdir(cwd) if not x.startswith('.')]
+def tree(path, prepend=""):
+    dir_content = listdir_nohidden_sorted(path)
     count_files = 0
     count_dir = 0
 
@@ -30,11 +35,11 @@ def tree(cwd, prepend=""):
         else:
             print(prepend + "├── " + str(line))
             subdir_prepend = "│   "
-        if os.path.isfile(os.path.join(cwd, line)):
+        if os.path.isfile(os.path.join(path, line)):
             count_files += 1
         else:
             count_dir += 1
-            result = tree(os.path.join(cwd, line), prepend + subdir_prepend)
+            result = tree(os.path.join(path, line), prepend + subdir_prepend)
             count_files += result[0]
             count_dir += result[1]
     return count_files, count_dir
