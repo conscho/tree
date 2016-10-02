@@ -6,7 +6,7 @@ import re
 
 # Weird sorting
 def weird_sort(input):
-    return re.sub('[^a-zA-Z]', '', input).lower()
+    return re.sub('[^a-zA-Z0-9]', '', input).lower()
 
 
 # List folder contents in sorted format
