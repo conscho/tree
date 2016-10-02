@@ -8,6 +8,7 @@ import re
 def weird_sort(input):
     return re.sub('[^a-zA-Z]', '', input).lower()
 
+
 # List folder contents in sorted format
 def listdir_nohidden_sorted(path):
     dir_content = [x for x in os.listdir(path) if not x.startswith('.')]
