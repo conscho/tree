@@ -10,10 +10,10 @@ count_dir = 0
 # Get root directory for tree and first line of output
 if len(sys.argv) == 1:
     cwd = os.getcwd()
-    print(".\n")
+    print(".")
 else:
     cwd = sys.argv[1]
-    print(str(cwd) + "\n")
+    print(cwd)
 
 
 # Recursive function
@@ -25,12 +25,11 @@ def tree(cwd, prepend=""):
     for i, line in enumerate(dir_content):
         # If last element in directory, formating is different
         if i == len(dir_content) - 1:
-            print(prepend + "└── " + str(line) + "\n")
+            print(prepend + "└── " + str(line))
             subdir_prepend = "    "
         else:
-            print(prepend + "├── " + str(line) + "\n")
+            print(prepend + "├── " + str(line))
             subdir_prepend = "│   "
-
         if os.path.isfile(os.path.join(cwd, line)):
             count_files += 1
         else:
