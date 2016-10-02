@@ -21,6 +21,7 @@ def listdir_nohidden_sorted(path):
     dir_content = [x for x in os.listdir(path) if not x.startswith('.')]
     return sorted(dir_content, key=str.lower)
 
+
 # Recursive function
 def tree(path, prepend=""):
     dir_content = listdir_nohidden_sorted(path)
